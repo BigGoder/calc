@@ -107,7 +107,11 @@ export default function Calculator() {
         : utils.replaceExpression(equation);
       // eslint-disable-next-line
       const result = parseFloat(eval(resultStr).toFixed(9)).toString();
-      if (result === "Infinity") {
+      if (
+        result === "Infinity" ||
+        result === "-Infinity" ||
+        isNaN(Number(result))
+      ) {
         clear();
         return;
       }
